@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>绿</title>
+    <title>潮湿交错的绿意 - 夏日回忆</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -14,7 +14,7 @@
                         primary: '#2F4F4F',
                         secondary: '#4A6741',
                         accent: '#8FBC8F',
-                        light: '#E8F5E9', // 恢复原来的背景色
+                        light: '#E8F5E9',
                         dark: '#1A2929'
                     },
                     fontFamily: {
@@ -30,14 +30,8 @@
             .text-shadow {
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             }
-            .rain-effect {
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='20' viewBox='0 0 4 20'%3E%3Cpath fill='%239C92AC' fill-opacity='0.2' d='M1 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm1.5-11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 10c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM1 2c3.866 0 7-3.134 7-7S4.866-12 1-12 8 8.134 8 12s-3.134 7-7 7z'%3E%3C/path%3E%3C/svg%3E");
-            }
-            .leaf-pattern {
-                background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234A6741' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            }
             
-            /* 下雨特效样式 */
+            /* 白色雨丝特效样式 */
             .rain-container {
                 position: fixed;
                 top: 0;
@@ -52,7 +46,7 @@
             .raindrop {
                 position: absolute;
                 width: 1px;
-                background: linear-gradient(to bottom, rgba(173, 216, 230, 0), rgba(173, 216, 230, 0.8));
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
                 animation: fall linear infinite;
             }
             
@@ -61,12 +55,46 @@
                     transform: translateY(100vh);
                 }
             }
+
+            /* 雨声控制按钮样式 */
+            .sound-control {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 100;
+                background-color: rgba(74, 103, 65, 0.8);
+                color: white;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .sound-control:hover {
+                transform: scale(1.1);
+                background-color: rgba(74, 103, 65, 1);
+            }
         }
     </style>
 </head>
-<body class="bg-light leaf-pattern min-h-screen font-serif text-primary">
+<body class="bg-light min-h-screen font-serif text-primary">
     <!-- 下雨特效容器 -->
     <div class="rain-container" id="rainContainer"></div>
+    
+    <!-- 雨声控制按钮 -->
+    <div class="sound-control" id="soundControl">
+        <i class="fa fa-volume-up" id="soundIcon"></i>
+    </div>
+    
+    <!-- 音频元素 (默认隐藏) -->
+    <audio id="rainAudio" loop>
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-light-rain-ambience-1247.mp3" type="audio/mpeg">
+    </audio>
     
     <!-- 顶部装饰条 -->
     <div class="h-1 bg-gradient-to-r from-secondary via-accent to-secondary"></div>
@@ -76,9 +104,9 @@
         <!-- 标题区域 -->
         <header class="mb-12 text-center relative">
             <div class="absolute inset-0 bg-accent/10 rounded-lg transform -rotate-1"></div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative z-10 text-primary">潮湿交错的绿意</h1>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative z-10 text-primary">绿</h1>
             <div class="w-32 h-1 bg-secondary mx-auto mb-6"></div>
-            <p class="text-lg md:text-xl italic text-secondary/80">一段关于夏日与回忆的故事</p>
+            <p class="text-lg md:text-xl italic text-secondary/80">柏闻&岑淮棠</p>
         </header>
         
         <!-- 故事内容区域 -->
@@ -86,13 +114,13 @@
             <!-- 第一段 -->
             <section class="relative pl-1 md:pl-4 border-l-2 border-accent/50 transition-all duration-300 hover:border-accent/80 fade-element">
                 <p>
-                    某天MANTA和LASER一起团建活动时，第一个真心话问到了柏闻。大抵是刚开始气氛还未上去，他们也只是问起柏闻年少时关于夏天最深的记忆。
+                    某天MANTA和LASER一起团建活动时，第一个真心话话问到了柏闻。大抵是刚开始气氛还未上去，他们也只是问起柏闻年少时关于夏天最深的记忆。
                 </p>
                 <p class="mt-4 ml-6 italic">
                     他说，“是潮湿交错的绿意。”
                 </p>
                 <p class="mt-4">
-                    其他八个人第一反应是有些不解，毕竟北京一年四季都是干燥的，过了几秒反应过来或许是他在英国那几年的事情，和他调侃着开玩笑说“我们柏大队长这么早就对大小姐有了别的心思啊。”
+                    其他八个人第一反应是有些不解，毕竟竟北京一年四季都是干燥的，过了几秒反应过来或许是他在英国那几年的事情，和他调侃着开玩笑说“我们柏大队长这么早就对大小姐有了别的心思啊。”
                 </p>
                 <p class="mt-4">
                     他们本也没真以为这段记忆真和岑淮棠相关，毕竟柏闻似乎不像是那种满心恋爱的类型，更别提和一个尚且年幼的女孩早恋。
@@ -131,13 +159,14 @@
                 </p>
             </section>
             
+            <!-- 第四段到第七段内容保持不变 -->
             <!-- 第四段 -->
             <section class="relative pl-1 md:pl-4 border-l-2 border-accent/50 transition-all duration-300 hover:border-accent/80 fade-element">
                 <p>
                     他将两杯拉过花的咖啡放在平日两人趴着上色的地毯边，拿起那本只差最后一页的涂色书从头翻起来。
                 </p>
                 <p class="mt-4">
-                    最开始的几页很明显是小朋友自己一个人涂的，或许因为急性子有些地方涂超出来，或者并没有完整的填满，亦或是有些只涂了一半就像没兴趣了一样开始了下一页。
+                    最开始的几页很明显是小朋友自己一个人涂的，或许因为急性子有些地方涂超出来，或者并没有完整的填满，亦或是有些只涂了一半一半就像没兴趣了一样开始了下一页。
                 </p>
                 <p class="mt-4">
                     柏闻想着，拿起她留在家里的彩铅，细细的补全着那些空白。
@@ -166,7 +195,7 @@
                     他翻完整本书，看到一旁已经冷掉的咖啡，端起来走到厨房。在正准备倒掉的时候突然听到急急慌慌的敲门声，就随手先放在了吧台上走向门边。
                 </p>
                 <p class="mt-4">
-                    他想当他看到岑淮棠的那一瞬间他其实是开心的。
+                    他想当他看到到岑淮棠的那一瞬间他其实是开心的。
                 </p>
                 <p class="mt-4">
                     她抱着一束看上去和她上半身一样大的花束，手腕被好几个很大的礼品袋勒得有些泛红，雨伞有些可怜地快偏离手肘和身体的夹缝。
@@ -178,7 +207,7 @@
                     他抽出她夹着的伞给她打着，另一首接过东西让她能够腾出空闲的手。“今天天气很糟糕。这么大的雨为什么还要出门？”
                 </p>
                 <p class="mt-4 ml-6 italic">
-                    她似乎很疑惑我为什么这么问“我们不是约好了嘛，周末下雨我们都要一起涂这个~而且，哼哼我可是从你的朋友那里知道了今天是你的生日，我们两个是不是好有缘呀~生日都连着~”
+                    她似乎很疑惑我为什么这么问“我们不是约好了嘛，周末下雨我们都要一起涂这个~而且，哼哼我可是从你的朋友那里知道了今天是你的生日，我们两个是不是是不是好有缘有缘呀~生日都连着~”
                 </p>
                 <p class="mt-4 ml-6 italic">
                     她的语气轻快又带着点小骄傲“今天给你的花束是去花圃里自己摘来扎的，蛋糕也是自己做的！”
@@ -187,7 +216,7 @@
                     “是为了我的生日吗？”柏闻有些意料之外，“下次可以让保姆去的，雨太大了。”他顿了一下，“下次不要敲门这么急，晦气。”
                 </p>
                 <p class="mt-4">
-                    他没回答她在身后发出的疑惑，去一楼客卫拿了条干毛巾递给她，她似乎也没太在意前面未解答的问题，搓着自己的湿掉的发尾，接着讲着今天给他准备生日时发生的有意思的事情。
+                    他没回答她在身后发出的疑惑，去一楼一楼客卫拿了条干毛巾递给她，她似乎也没太在意前面未解答的问题，搓着自己的湿掉的发尾，接着讲着今天给他准备生日时发生的有意思的事情。
                 </p>
                 <p class="mt-4 italic">
                     他突然想，她像一只淋了雨还骄傲地将抓到的漂亮猎物放在主人门口的猫猫。
@@ -197,13 +226,13 @@
             <!-- 第七段 -->
             <section class="relative pl-1 md:pl-4 border-l-2 border-accent/50 transition-all duration-300 hover:border-accent/80 fade-element">
                 <p>
-                    她墨绿色洋服的裙摆处似乎沾上了雨水的湿意。坐着地毯上，就像是落地窗外的浓郁绿色从某个角落钻进了室内。
+                    她墨绿色洋服的裙摆处似乎沾上了雨水的湿意。坐着地毯上，就像是落地窗外的浓郁绿色从某个个角落钻进了室内。
                 </p>
                 <p class="mt-4">
                     她抱着膝盖看着他：“我都按约定来了，你没有按约定给我做拉花咖啡”她还指了指被柏闻喝空的咖啡杯。“你是不是没想我来”她对着他眨了眨眼。
                 </p>
                 <p class="mt-4 ml-6 italic">
-                    “做了，但是你没来它冷了。”柏闻起身走到吧台前面准备开始重新冲一杯新的。
+                    “做了，但是你没来它冷了。”柏闻起身走到吧台前面准备开始始重新冲一杯新的。
                 </p>
                 <p class="mt-4 ml-6 italic">
                     “诶诶诶？！”岑淮棠似乎有些自知理亏，起身小跑到他的身边“这样啊......我就说说！你太辛苦的话不用做也OK的！”她拉着他的衬衣袖子扯了扯。
@@ -247,10 +276,10 @@
     
     <!-- 交互效果脚本 -->
     <script>
-        // 创建下雨特效
+        // 创建白色雨丝特效
         function createRain() {
             const rainContainer = document.getElementById('rainContainer');
-            const numberOfDrops = window.innerWidth < 768 ? 50 : 100; // 根据屏幕大小调整雨滴数量
+            const numberOfDrops = window.innerWidth < 768 ? 150 : 300; // 增加雨滴数量，营造毛毛细雨效果
             
             // 清除已有雨滴
             rainContainer.innerHTML = '';
@@ -259,12 +288,16 @@
                 const drop = document.createElement('div');
                 drop.classList.add('raindrop');
                 
-                // 随机设置雨滴属性
-                const size = Math.random() * 5 + 5; // 雨滴长度 5-10px
+                // 调整雨滴属性，更符合毛毛细雨
+                const size = Math.random() * 10 + 5; // 较短的雨滴 5-15px
                 const posX = Math.random() * 100; // 水平位置 0-100%
-                const delay = Math.random() * 2; // 延迟 0-2s
-                const duration = Math.random() * 0.5 + 0.5; // 下落时间 0.5-1s
-                const opacity = Math.random() * 0.5 + 0.3; // 透明度 0.3-0.8
+                const delay = Math.random() * 5; // 延迟 0-5s，更随机
+                const duration = Math.random() * 2 + 1.5; // 下落时间 1.5-3.5s，更慢
+                const opacity = Math.random() * 0.5 + 0.3; // 适中的透明度 0.3-0.8
+                
+                // 轻微的横向偏移，模拟风吹效果
+                const windEffect = Math.random() * 5 - 2.5;
+                drop.style.transform = `translateX(${windEffect}px)`;
                 
                 drop.style.height = `${size}px`;
                 drop.style.left = `${posX}%`;
@@ -276,12 +309,44 @@
             }
         }
         
+        // 雨声控制功能
+        function setupRainSound() {
+            const rainAudio = document.getElementById('rainAudio');
+            const soundControl = document.getElementById('soundControl');
+            const soundIcon = document.getElementById('soundIcon');
+            let isPlaying = false;
+            
+            // 点击控制按钮开关雨声
+            soundControl.addEventListener('click', () => {
+                if (isPlaying) {
+                    rainAudio.pause();
+                    soundIcon.classList.remove('fa-volume-up');
+                    soundIcon.classList.add('fa-volume-off');
+                } else {
+                    // 尝试播放，处理浏览器自动播放限制
+                    rainAudio.play().catch(e => {
+                        console.log('需要用户交互才能播放声音:', e);
+                        alert('请点击按钮开启雨声');
+                    });
+                    soundIcon.classList.remove('fa-volume-off');
+                    soundIcon.classList.add('fa-volume-up');
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // 降低音量，避免过于突兀
+            rainAudio.volume = 0.3;
+        }
+        
         // 滚动时的淡入效果
         document.addEventListener('DOMContentLoaded', () => {
             // 创建下雨效果
             createRain();
             // 窗口大小改变时重新创建雨滴
             window.addEventListener('resize', createRain);
+            
+            // 设置雨声控制
+            setupRainSound();
             
             const sections = document.querySelectorAll('.fade-element');
             
