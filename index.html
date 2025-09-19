@@ -402,59 +402,6 @@
             });
         }
         
-        // 下雨音效控制
-        function setupRainSound() {
-            const rainSoundBtn = document.getElementById('rainSoundBtn');
-            const rainSound = document.getElementById('rainSound');
-            let isPlaying = false;
-            
-            rainSoundBtn.addEventListener('click', () => {
-                if (isPlaying) {
-                    rainSound.pause();
-                    rainSoundBtn.innerHTML = '<i class="fa fa-volume-up text-2xl"></i>';
-                } else {
-                    rainSound.play();
-                    rainSoundBtn.innerHTML = '<i class="fa fa-volume-off text-2xl"></i>';
-                }
-                isPlaying = !isPlaying;
-            });
-        }
-        
-        // 添加自定义音乐
-        function addCustomMusic() {
-            const musicUrl = document.getElementById('musicUrl').value.trim();
-            if (!musicUrl) return;
-            
-            const customMusic = document.getElementById('customMusic');
-            
-            // 清除现有音乐
-            customMusic.innerHTML = '';
-            
-            const audioContainer = document.createElement('div');
-            audioContainer.className = 'mt-4';
-            
-            const audio = document.createElement('audio');
-            audio.controls = true;
-            audio.className = 'w-full';
-            
-            const source = document.createElement('source');
-            source.src = musicUrl;
-            source.type = 'audio/mpeg';
-            
-            audio.appendChild(source);
-            audioContainer.appendChild(audio);
-            customMusic.appendChild(audioContainer);
-            
-            // 错误处理
-            audio.onerror = () => {
-                alert('无法加载音乐，请检查URL是否正确');
-                customMusic.innerHTML = '';
-            };
-            
-            // 清空输入框
-            document.getElementById('musicUrl').value = '';
-        }
-        
         // 初始化
         window.addEventListener('DOMContentLoaded', () => {
             createRain();
@@ -466,5 +413,4 @@
         });
     </script>
 </body>
-</html>
-    
+</html>       
