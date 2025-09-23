@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serein 0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#681414',
+                        text: '#D7CCB6',
+                        petal: '#2b0307'
+                    },
+                    fontFamily: {
+                        serif: ['Garamond', 'Georgia', 'Times New Roman', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow-sm {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            }
+            .prose-custom {
+                max-width: 700px;
+            }
+            .petal {
+                position: absolute;
+                background-color: theme('colors.petal');
+                border-radius: 50% 50% 20% 80%;
+                pointer-events: none;
+                opacity: 0.7;
+                z-index: 0;
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-text font-serif min-h-screen relative overflow-x-hidden">
+    <!-- 返回按钮 -->
+    <div class="fixed top-6 left-6 z-50">
+        <a href="https://www.notion.so/Doceur-2610b42b92cf80128693cdbe55684fbe" class="inline-block px-4 py-2 border border-text/50 text-text hover:bg-text/10 transition-all duration-300 text-sm tracking-wider">
+            BACK
+        </a>
+    </div>
+
+    <!-- 花瓣容器 -->
+    <div id="petals-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- 主内容区 -->
+    <main class="relative z-10 container mx-auto px-4 md:px-8 py-12 md:py-20 max-w-4xl">
+        <!-- 标题区域 -->
+        <header class="mb-16 text-center fade-in">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-light tracking-wider mb-2 opacity-90">玫瑰与等待</h1>
+            <div class="w-32 h-px bg-text/50 mx-auto"></div>
+        </header>
+
+        <!-- 文章内容 -->
+        <article class="prose-custom mx-auto leading-relaxed text-lg md:text-xl space-y-8">
+            <p class="indent-10 fade-in">
+                柏闻醒来时大概早上六点。从韩国回来后，或许是因为长期大量摄入咖啡因的缘故，他变得少觉。在岑淮棠锲而不舍监督他少喝咖啡以及缠着他陪她多睡一会的调理下情况倒是有所好转。
+            </p>
+            <p class="indent-10 fade-in">
+                他走到红馆的花园里，春季的六点半遇上不明朗的天气依旧很阴，只从极厚的云层间透下点光。清晨的雾气还很重，就算北京的春天并没有回南天，但他走入花园时还是感觉衣衫已经被濡湿，玫瑰的蒸气钻进体内和每一个细胞争斗。
+            </p>
+            
+            <p class="text-center italic my-10 fade-in">
+                一千滴晨雾死去后的骸骨留在花瓣上。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                他伸手用花艺剪刀剪下其中将开的形状最好看的几支。他的玫瑰，和他的......玫瑰。
+                又突然想起来路易斯说在永恒葱郁的玫瑰间能够找到神衹纯净的爱。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                随着他的动作花瓣上的水珠滚落，粉碎在有些粗糙的石板路面。他用钳子撇下被水汽磨的有些发软的刺。在他将那束花扎起前他犹豫了一秒，抽出了一支放在床头的花瓶里，然后重新将那束花包装好。
+            </p>
+            <p class="indent-10 fade-in">
+                他想，偶尔亲自为她带一束自己栽种装饰的花也挺有意思的，给她花也给她花里裹挟着的时间和灵魂。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                他将花束放在窗台上后，坐在桌子前和往日一样看着财报。微凉的风从他打开透气的窗户闯入，他看着空气的波动牵着花瓶里单支的玫瑰颤抖。
+            </p>
+            <p class="indent-10 fade-in">
+                它的枝茎看起来只要他的手指稍微用力就能够被折断。
+            </p>
+            <p class="indent-10 fade-in">
+                今天他们四个都因为各自的事情没在红馆，倒是很久没有如此安静了。他走到岛台前，刚打算准备一杯咖啡又想起岑淮棠牵着自己袖口让自己少喝咖啡的神色。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                他拿起了没看完的书看着，等待着约定的两点靠近。
+            </p>
+            <p class="indent-10 fade-in">
+                他感觉诗集的字里行间总是闪过玫瑰的影子，尽管他其实读诗的频率并没有那么高，今天只是突然想起无意在岑淮棠书房桌子上看到的这本。
+            </p>
+            
+            <p class="text-right italic my-10 fade-in">
+                窗外开始飘雨，但是玫瑰花瓣淹没了所有的雨。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                他想他虽然不将玫瑰折下带回自己的屋檐下，但他可以造一个足够精致的花园。
+            </p>
+            <p class="indent-10 fade-in">
+                他想起年幼时岑淮棠来找他的等待时刻总爱在种满玫瑰的院子里。她只是站在那里，周围的花便全部拥着她。
+            </p>
+            <p class="indent-10 fade-in">
+                玫瑰花瓣也淹没了整个他。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                只是到下午见面，他看到她打着伞和朋友有说有笑地从教学楼出来，看到他的车后和朋友告别跑向他。
+            </p>
+            <p class="indent-10 fade-in">
+                他又感觉园圃中的玫瑰大概不会开的这么鲜活了。
+            </p>
+            
+            <p class="indent-10 fade-in">
+                雨似乎停了，但淹没他的玫瑰花瓣从来在累积增长。
+            </p>
+        </article>
+        
+        <!-- 页脚 -->
+        <footer class="mt-20 text-center text-sm opacity-70">
+            <div class="w-24 h-px bg-text/30 mx-auto mb-6"></div>
+            <p>© 汐枳</p>
+        </footer>
+    </main>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化花瓣效果
+            initPetals();
+            
+            // 初始化滚动淡入效果
+            initFadeInOnScroll();
+            
+            // 检查初始可见元素
+            checkFadeElements();
+        });
+        
+        // 花瓣飘落效果
+        function initPetals() {
+            const container = document.getElementById('petals-container');
+            const totalPetals = 30; // 花瓣总数
+            
+            // 确保容器存在
+            if (!container) {
+                console.error('花瓣容器未找到');
+                return;
+            }
+            
+            // 创建花瓣
+            for (let i = 0; i < totalPetals; i++) {
+                createPetal(container);
+            }
+            
+            // 响应窗口大小变化
+            window.addEventListener('resize', () => {
+                // 清除现有花瓣
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+                
+                // 重新创建花瓣
+                for (let i = 0; i < totalPetals; i++) {
+                    createPetal(container);
+                }
+            });
+        }
+        
+        function createPetal(container) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            // 随机大小
+            const size = Math.random() * 8 + 3;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            
+            // 随机初始位置
+            const width = window.innerWidth;
+            petal.style.left = `${Math.random() * width}px`;
+            petal.style.top = `-${size}px`;
+            
+            // 随机动画
+            const duration = Math.random() * 15 + 10; // 10-25秒
+            const delay = Math.random() * 10; // 0-10秒延迟
+            
+            // 添加动画
+            petal.style.animation = `
+                fall ${duration}s linear ${delay}s infinite,
+                sway ${(Math.random() * 3 + 2)}s ease-in-out ${delay}s infinite alternate
+            `;
+            
+            container.appendChild(petal);
+        }
+        
+        // 滚动淡入效果
+        function initFadeInOnScroll() {
+            // 监听滚动事件
+            window.addEventListener('scroll', checkFadeElements);
+        }
+        
+        function checkFadeElements() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150; // 元素顶部距离视口底部多少时显示
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // 添加CSS动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(${window.innerHeight}px) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+            @keyframes sway {
+                from {
+                    transform: translateX(-20px);
+                }
+                to {
+                    transform: translateX(20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+    
